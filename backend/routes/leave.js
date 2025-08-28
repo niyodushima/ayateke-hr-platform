@@ -57,4 +57,22 @@ router.get(
   }
 );
 
+// ✅ PUT: Update leave request status
+router.put('/:id/status', async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  if (!['Approved', 'Rejected'].includes(status)) {
+    return res.status(400).json({ error: 'Invalid status value' });
+  }
+
+  try {
+    const updated = await leaveController.updateLeaveStatus(id, status);
+    res.json(updated);
+  } catch (err) {
+    console.error('❌ Error updating leave status:', err.message);
+    res.status(500).json({ error: 'Failed to update leave status' });
+  }
+});
+
 export default router;

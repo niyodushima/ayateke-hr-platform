@@ -34,9 +34,9 @@ const Login = () => {
       localStorage.setItem('user', JSON.stringify(data.user));
 
       if (data.user.role === 'admin') {
-        navigate('/reports');
+        navigate('/admin');
       } else {
-        navigate('/');
+        navigate('/staff');
       }
     } catch (error) {
       toast({ title: error.message, status: 'error' });
@@ -45,16 +45,20 @@ const Login = () => {
 
   return (
     <Box
-      minH="100vh"
-      bgImage="url('/background.jpeg')" // Replace with your actual image path
-      bgSize="cover"
-      bgPosition="center"
-      bgRepeat="no-repeat"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      px={4}
-    >
+  position="absolute"
+  top={0}
+  left={0}
+  w="100vw"
+  h="100vh"
+  bgImage="linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/background.jpeg')"
+  bgSize="cover"
+  bgPosition="center"
+  bgRepeat="no-repeat"
+  display="flex"
+  alignItems="center"
+  justifyContent="center"
+  px={4}
+>
       <Box
         bg="whiteAlpha.900"
         p={8}

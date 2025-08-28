@@ -1,16 +1,14 @@
-import { Flex, Box } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
+import { Outlet } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
-import { Outlet } from 'react-router-dom';
-import Login from '../pages/Login'; // ❌ unused
-
 
 const DashboardLayout = () => (
-  <Flex h="100vh">
+  <Flex height="100vh" overflow="hidden">
     <Sidebar />
-    <Box flex="1" bg="gray.50">
+    <Box flex="1" display="flex" flexDirection="column" bg="gray.50">
       <Navbar />
-      <Box p={6}>
+      <Box flex="1" overflowY="auto" p={6}>
         <Outlet />
       </Box>
     </Box>
